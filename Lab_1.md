@@ -6,7 +6,7 @@
 
 
 ## Lab 1 – Learning System Verilog with Verilator and Vbuddy
-##### *Peter Cheung, v1.0 - 18 Oct 2022*
+##### *Peter Cheung, v1.1 - 19 Oct 2022*
 
 ---
 ## Objectives
@@ -33,7 +33,8 @@ Before you start this Lab Session, you should have completed [Lab 0](https://git
 * Verilator
 * GTKwave
 * GNU toolchain
-   
+
+You should create a github account. I will be putting on github all my lab instructions and other supporting materials. You are also expected to keep your work for this module on github.  If you do not already know how to use git and github, and watch the youtube video introducing how to use git and github.    
   
 ## What is System Verilog?
 ---
@@ -65,13 +66,11 @@ Vbuddy is so named because it is a companion (or buddy) to Verilator, Verilog an
 ______
 ## Task1 - Simulating a basic 8-bit binary counter
 
-
 **Step 1: Create a folder tree** on your local disk for this module. 
 
-The easiest way to achieve this is to "fork" this github  repo. To do this, go to your home folder for this moudle and click the FORK icon above. Just follow the instructions.  You will find the folder tree is created on your home folder with all relevant files you need for Lab 1.
+The easiest way to achieve this is to "fork" **this github repository** (repo) to your github account. If you do not already have one, you need to create one for this module. Now you need to FORK this repo to your github account, and then CLONE it onto your local disk. After successfuly clone the the Lab 1 repo to your disk, you should find a folder called Lab1-Counter.  This is your personal folder for Lab 1. You can add files to it and push them back to your github repo under your github account.
 
-
-**Step 2:** Run VS Code and open this folder with:
+**Step 2:** Run VS Code and open the Lab1-Counter folder with:
 
 *File -> Open Folder* (then select the task1 folder)
 
@@ -177,9 +176,9 @@ Make these modification, compile, and run.  Examine the waveform with GTKwave an
 ## Task 2: Linking Verilator simulation with Vbuddy
 ---
 
-In this task, you will learn how to modify the testbench to interface with the Vbuddy board.  Before you start, create a new task2 folder and make a copy of **_counter.sv_** and **_counter_tb.cpp_**.  
+In this task, you will learn how to modify the testbench to interface with the Vbuddy board.  Before you start, copy  **_counter.sv_** and **_counter_tb.cpp_** to the task2 folder.  
 
-Your local Lab_1 repo should already contain a task2 folder which has the files: **_Vbuddy.cpp_** and **_Vbuddy.cfg_**. The folder also contains the solution to Task 2 - the Verilated model in the file **_task2_solution_**. 
+You also need to make a copy of the files **_Vbuddy.cpp_** and **_Vbuddy.cfg_** from your Lab 1 folder to here.
 
 **Step 1: Set up the Vbuddy interface** 
 
@@ -199,18 +198,12 @@ You should see device name as something similar this:
 
 ---
 **_Window Users_**
-
+(This instruction for PC is to be updated.)
 For PC users, you need to find the COMS Port used to connect to Vbuddy.  To do this, open the Device Manager, and you should see which COMS port (e.g. COM1 or COM6) is connect to Vbuddy via the USB cable.
 
 ---
 
 Create a file: **_vbuddy.cfg_**, which contains the device name as the only line (terminated with CR).  You may use VS Code or the Linux nano editor to do this. 
-
-Press the RESET button on Vbuddy. Now run the counter model that was prepared for you by entering the following command in the terminal window:
-```bash
-./task2_solution
-```
-You should now see the counter output being displayed on the Vbuddy’s TFT screen as four 7-segment LED digits.  The bottom right corner also shows the cycle count.
 
 **Step 2: Modify testbench for Vbuddy**
 
@@ -231,7 +224,7 @@ You can use this feature to enable and disable the counter by modifying line 48 
     top->en = vbdFlag();
 ```
 
-Re-compile and test.  If you are not sure, you can run the solution **_task3_solution_** provided in your task3 folder.
+Re-compile and test.  
 
 Instead of showing count values on 7-segment displays, you may also plot this on the TFT by replacing the **_vdbHex()_** section with the command **_vbdPlot()_**.  You may want to increase the number of clock cycles to simulate because plotting a dot is much faster than outputting to the 7-segment display.  You can start/stop the counter with the flag.
 ```C++
@@ -247,8 +240,6 @@ WELL DONE!  YOU MANAGE TO SPECIFY AND VERIFY YOUR DESIGN AND USE VBUDDY TO SEE T
 ___
 
 ## Task 3: Vbuddy parameter & flag in one-shot mode (OPTIONAL)
-
-Before you start Task2, run the solution **./task3_solution** in the task2 folder to see what to expect.
 
 The rotary encodes (EC11) provides input from Vbuddy to the Verilator simulation model.  Turning the encoder changes a stored parameter value on Vbuddy independently from the Verilator simulation.  This parameter value can be read using the **_vbdValue( )_** function, and is displayed on the bottom left corner of the TFT screen in both decimal and hexadecimal format.  
 
@@ -273,8 +264,6 @@ Modify **counter.sv** so that you only increment the counter each time you press
 
 ## Task 4: Displaying count as Binary Coded Decimal (BCD) numbers (OPTIONAL)
 ---
-
-Before you start Task4, run the solution **_./task4_solution_** in the task4 folder to see what to expect.
 
 So far, you have only simulated a single module.  In this task, you will create a top-level module (**top.sv**), which has the counter module, and a second module that converts the 8-bit binary number into three BCD digits. You can find out how the binary to BCD conversion algorithm works from the course webpage.  
 
