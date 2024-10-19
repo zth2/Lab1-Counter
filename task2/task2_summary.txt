@@ -19,7 +19,7 @@ In this task, the goal was to modify the testbench to interface with the Vbuddy 
 
 2. **Modify testbench for Vbuddy**
     - We modify the testbench file count_tb.cpp to include Vbuddy function.
-    ![count_tb.cpp](https://github.com/zth2/Lab1-Counter/raw/master/images/vbd_function.jpg)
+    ![Vbuddy Function Image](https://github.com/zth2/Lab1-Counter/raw/master/images/vbd_function.jpg)
 
 3. **Explore flag feature on Vbuddy**
     - Vbuddy’s rotary encode has a push-button switch. Vbuddy keeps an internal flag which, by default, will toggle between ‘0’ and ‘1’ each time the button is pressed. You can interrogate this toggle switch state with vbdFlag();, which will return its current state and then toggle.
@@ -54,7 +54,8 @@ The challenge ask to modify the counter and testbench files so that the en signa
      top->en = vbdFlag();  // '1' for counting up, '0' for counting down
      ```
 
-    ![VbuddyTast2Challenge]("C:\Users\honzi\OneDrive\Pictures\Screenshots\WhatsApp Image 2024-10-19 at 14.39.44_352cebfe.jpg")
+    ![VbuddyTask2Challenge](https://github.com/zth2/Lab1-Counter/raw/master/images/WhatsApp%20Image%202024-10-19%20at%2014.39.44_352cebfe.jpg)
+
 
 
 ### Conclusion:
